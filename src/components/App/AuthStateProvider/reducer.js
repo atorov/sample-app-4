@@ -15,7 +15,7 @@ function reducer(state, action) {
 
         // Do not match
         default:
-            console.warn('::: action.type:', action.type)
+            console.warn('::: [auth state provider/action not match]', action.type)
             throw new Error('Action type does not match!')
         // return state
     }

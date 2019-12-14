@@ -17,7 +17,7 @@ const STORAGE = path.resolve(__dirname, '__storage__')
 const EXCLUDE_DEFAULT = [NODE_MODULES, EXTERNALS, STORAGE]
 
 const SRC = path.resolve(__dirname, 'src')
-const DIST = path.resolve(__dirname, 'build/www/sample-app-4')
+const DIST = path.resolve(__dirname, 'build/www/sample-app')
 
 const NODE_ENV = process.env.NODE_ENV
 const MODE = NODE_ENV !== 'development' ? 'production' : 'development'
@@ -42,7 +42,7 @@ const config = {
 
     output: {
         path: DIST,
-        publicPath: '/sample-app-4/',
+        publicPath: '/sample-app/',
     },
 
     devtool: 'source-map',
@@ -220,9 +220,9 @@ if (MODE === 'development') {
     config.devServer = {
         host: HOST,
         port: PORT,
-        publicPath: '/sample-app-4/',
+        publicPath: '/sample-app/',
         historyApiFallback: {
-            index: '/sample-app-4/index.html',
+            index: '/sample-app/index.html',
         },
         disableHostCheck: true,
         stats: 'errors-only',

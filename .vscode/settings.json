@@ -16,6 +16,7 @@
         "stroustrup",
         "unmount",
         "value",
-        "xdata"
+        "xdata",
+        "xsettings"
     ]
 }
