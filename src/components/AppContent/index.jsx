@@ -57,7 +57,7 @@ function AppContent() {
             ; (async () => {
                 xdataDispatch({ type: ':xdataState/INIT:' })
 
-                // let xDataResponse = null
+                const xdataResponse = null
                 // try {
                 //     xDataResponse = await myRequest.current('/sample-app/xdata/index.json')
                 // }
@@ -67,7 +67,7 @@ function AppContent() {
                 //     throw reason
                 // }
 
-                // if (xDataResponse) {
+                if (xdataResponse) {
                 //     xDataDispatch({
                 //         type: ':xdataState/SET_DATA:',
                 //         payload: xDataResponse,
@@ -76,9 +76,8 @@ function AppContent() {
                 //         type: ':xdataState/SET_STATUS:',
                 //         payload: ':READY:',
                 //     })
-                // }
-
-                // setStatus(':READY:')
+                    setStatus(':READY:')
+                }
             })()
         }
     }, [status, xdataDispatch])
