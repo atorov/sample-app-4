@@ -59,7 +59,7 @@ async function request(resource = '', init, custom) {
 
     let responseData
     try {
-        if (combinedHeaders['Content-Type'] === 'application-json') {
+        if (combinedHeaders['Content-Type'] === 'application/json') {
             responseData = await response.json()
         }
         // else if ...

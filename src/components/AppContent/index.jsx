@@ -6,16 +6,15 @@ import { makeStyles } from '@material-ui/core/styles'
 
 import LinearProgress from '@material-ui/core/LinearProgress'
 
-// import useMyRequest from '../../../lib/api/hooks/my-request/use-my-request'
+import useMyRequest from '../../lib/hooks/my-request/use-my-request'
+import gdv from '../../lib/utils/gdv'
 
-// import Routes from '../Routes'
+import Routes from '../Routes'
 import TopBar from '../TopBar'
 
 import { AppStateContext } from '../App/AppStateProvider'
-import {
-    XDataDispatchContext,
-    // XDataStateContext,
-} from '../App/XDataStateProvider'
+import { AuthStateContext } from '../App/AuthStateProvider'
+import { XDataDispatchContext, XDataStateContext } from '../App/XDataStateProvider'
 
 const useStyles = makeStyles((theme) => ({
     appMain: ({ topBarHeight }) => ({
@@ -33,17 +32,24 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function AppContent() {
+    console.log('--- --- ---')
+
     // Use context -------------------------------------------------------------
     const appState = React.useContext(AppStateContext)
+    console.log('::: appState:', appState)
+
+    const authState = React.useContext(AuthStateContext)
+    console.log('::: authState:', authState)
 
     const xdataDispatch = React.useContext(XDataDispatchContext)
-    // const xdataState = React.useContext(XDataStateContext)
+    const xdataState = React.useContext(XDataStateContext)
+    console.log('::: xdataState:', xdataState)
 
     // Use Material UI hook ----------------------------------------------------
     const classes = useStyles({ topBarHeight: appState.ui.topBar.height })
 
     // Use custom hook ---------------------------------------------------------
-    // const myRequest = useMyRequest()
+    const myRequest = useMyRequest()
 
     // Use state ---------------------------------------------------------------
     const [status, setStatus] = React.useState(':GET_STARTED:') // ':GET_STARTED:' | ':PENDING:' | ':ERROR:' | ':READY:'
@@ -57,30 +63,38 @@ function AppContent() {
             ; (async () => {
                 xdataDispatch({ type: ':xdataState/INIT:' })
 
-                const xdataResponse = null
-                // try {
-                //     xDataResponse = await myRequest.current('/sample-app/xdata/index.json')
-                // }
-                // catch (reason) {
-                //     console.error('::: Gateway request error!')
-                // setStatus(':ERROR:')
-                //     throw reason
-                // }
+                let xdata = null
+                try {
+                    xdata = (await myRequest.current('/sample-app/xdata/index.json')).data
+                }
+                catch (reason) {
+                    console.error('::: [fetch xdata] reason:', reason)
+                    setStatus(':ERROR:')
+                    throw reason
+                }
 
-                if (xdataResponse) {
-                //     xDataDispatch({
-                //         type: ':xdataState/SET_DATA:',
-                //         payload: xDataResponse,
-                //     })
-                //     xDataDispatch({
-                //         type: ':xdataState/SET_STATUS:',
-                //         payload: ':READY:',
-                //     })
-                    setStatus(':READY:')
+                if (xdata) {
+                    const xsettings = gdv(xdata, 'xsettings', {})
+
+                    xdataDispatch({
+                        type: ':xdataState/xsettings/SET:',
+                        payload: xsettings,
+                    })
+                    xdataDispatch({
+                        type: ':xdataState/status/SET:',
+                        payload: ':READY:',
+                    })
                 }
             })()
         }
-    }, [status, xdataDispatch])
+    }, [myRequest, status, xdataDispatch])
+
+    // Update status
+    React.useEffect(() => {
+        if (status !== ':READY:' && xdataState.status === ':READY:') {
+            setStatus(':READY:')
+        }
+    }, [status, xdataState.status])
 
     // Main renderer ===========================================================
     return (
@@ -88,7 +102,7 @@ function AppContent() {
             <div className={classes.appWrapper}>
                 <TopBar />
                 <main className={classes.appMain}>
-                    {status === ':READY:' ? null /* <Routes /> */ : <LinearProgress />}
+                    {status === ':READY:' ? <Routes /> : <LinearProgress />}
                 </main>
             </div>
         </BrowserRouter>

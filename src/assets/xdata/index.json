@@ -1,3 +1,5 @@
 {
-    "xsettings": {}
+    "xsettings": {
+        "someSettingsGoesHere": true
+    }
 }
