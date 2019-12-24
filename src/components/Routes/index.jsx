@@ -35,16 +35,16 @@ function Routes() {
         // <React.Suspense fallback={<Fallback />}>
         <Switch>
             {/* <Route path=["/", "/home"] exact>
-                        <Home />
-                    </Route> */}
+                <Home />
+            </Route> */}
 
             {/* <Route path="/" exact>
-                        <CDashboard />
-                    </Route> */}
+                <CDashboard />
+            </Route> */}
 
             {/* <Route path="/sign-in" exact>
-                        <CSignIn />
-                    </Route> */}
+                <CSignIn />
+            </Route> */}
 
             {/* <PrivateRoute path="/private" exact PrivateComponent={...} /> */}
 
