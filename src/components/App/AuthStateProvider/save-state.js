@@ -1,4 +1,4 @@
-function saveState(data, itemKey = 'smaple-app') {
+function saveState(data, itemKey = 'sample-app') {
     try {
         const serialized = JSON.stringify(data)
         sessionStorage.setItem(itemKey, serialized)

@@ -7,7 +7,7 @@ import saveState from './save-state'
 
 const initState = getInitState()
 
-const AuthDispatchContext = React.createContext(() => {})
+const AuthDispatchContext = React.createContext(() => { })
 AuthDispatchContext.displayName = 'AuthDispatchContext'
 
 const AuthStateContext = React.createContext(initState)
@@ -21,7 +21,7 @@ function AuthStateProvider({ children }) {
 
     // Use effect --------------------------------------------------------------
     React.useEffect(() => {
-        saveState(state)
+        saveState(state/* , 'sample-app-4' */)
     }, [state])
 
     // Main renderer ===========================================================

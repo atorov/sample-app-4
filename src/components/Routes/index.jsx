@@ -4,30 +4,29 @@ import {
     Redirect,
     Route,
     Switch,
-    // useHistory,
+    useHistory,
 } from 'react-router-dom'
 
 import ErrorBoundary from '../widgets/ErrorBoundary'
 import Fallback from '../widgets/Fallback'
+import PrivateRoute from '../widgets/PrivateRoute'
 
-// import PrivateRoute from './PrivateRoute'
-
-// const CDashboard = lazy(() => import('../../Dashboard'))
+const CDashboard = React.lazy(() => import('../Dashboard'))
 const CHome = React.lazy(() => import('../Home'))
-// const CSignIn = lazy(() => import('../../SignIn'))
+const CSignIn = React.lazy(() => import('../SignIn'))
 
 function Routes() {
     // Use ref -----------------------------------------------------------------
-    // const unlisten = useRef()
+    const unlistenRef = React.useRef()
 
     // Use React Router hook ---------------------------------------------------
-    // const history = useHistory()
+    const history = useHistory()
 
     // Use ref -----------------------------------------------------------------
-    // useEffect(() => {
-    //     unlisten.current = history.listen(() => window.scrollTo(0, 0))
-    //     return () => unlisten.current()
-    // }, [history])
+    React.useEffect(() => {
+        unlistenRef.current = history.listen(() => window.scrollTo(0, 0))
+        return () => unlistenRef.current()
+    }, [history])
 
     // Main renderer ===========================================================
     return (
@@ -38,15 +37,11 @@ function Routes() {
                         <CHome />
                     </Route>
 
-                    {/* <Route path="/" exact>
-                        <CDashboard />
-                    </Route> */}
-
-                    {/* <Route path="/sign-in" exact>
+                    <Route path="/sign-in" exact>
                         <CSignIn />
-                    </Route> */}
+                    </Route>
 
-                    {/* <PrivateRoute path="/private" exact PrivateComponent={...} /> */}
+                    <PrivateRoute path="/dashboard" exact PrivateComponent={CDashboard} />
 
                     <Redirect to="/" />
                 </Switch>
