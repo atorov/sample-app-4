@@ -5,6 +5,11 @@ const initState = {
         topBar: {
             height: 64,
         },
+        xtheme: {
+            palette: {
+                colorBlueLight: 'rgb(175, 238, 238)',
+            },
+        },
     },
 }
 

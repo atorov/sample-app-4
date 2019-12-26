@@ -2,18 +2,18 @@ import React from 'react'
 
 import {
     Redirect,
-    // Route,
+    Route,
     Switch,
     // useHistory,
 } from 'react-router-dom'
 
-// import ErrorBoundary from '../../widgets/ErrorBoundary'
+import ErrorBoundary from '../widgets/ErrorBoundary'
+import Fallback from '../widgets/Fallback'
 
-// import Fallback from './Fallback'
 // import PrivateRoute from './PrivateRoute'
 
 // const CDashboard = lazy(() => import('../../Dashboard'))
-// const CHome = lazy(() => import('../../Home'))
+const CHome = React.lazy(() => import('../Home'))
 // const CSignIn = lazy(() => import('../../SignIn'))
 
 function Routes() {
@@ -31,27 +31,27 @@ function Routes() {
 
     // Main renderer ===========================================================
     return (
-        // <ErrorBoundary>
-        // <React.Suspense fallback={<Fallback />}>
-        <Switch>
-            {/* <Route path=["/", "/home"] exact>
-                <Home />
-            </Route> */}
+        <ErrorBoundary>
+            <React.Suspense fallback={<Fallback />}>
+                <Switch>
+                    <Route path={['/', '/home']} exact>
+                        <CHome />
+                    </Route>
 
-            {/* <Route path="/" exact>
-                <CDashboard />
-            </Route> */}
+                    {/* <Route path="/" exact>
+                        <CDashboard />
+                    </Route> */}
 
-            {/* <Route path="/sign-in" exact>
-                <CSignIn />
-            </Route> */}
+                    {/* <Route path="/sign-in" exact>
+                        <CSignIn />
+                    </Route> */}
 
-            {/* <PrivateRoute path="/private" exact PrivateComponent={...} /> */}
+                    {/* <PrivateRoute path="/private" exact PrivateComponent={...} /> */}
 
-            <Redirect to="/" />
-        </Switch>
-        // </React.Suspense>
-        // </ErrorBoundary>
+                    <Redirect to="/" />
+                </Switch>
+            </React.Suspense>
+        </ErrorBoundary>
     )
 }
 

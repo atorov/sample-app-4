@@ -18,6 +18,7 @@
         "unmount",
         "value",
         "xdata",
-        "xsettings"
+        "xsettings",
+        "xtheme"
     ]
 }
