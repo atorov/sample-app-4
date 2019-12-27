@@ -58,9 +58,9 @@ function AppContent() {
     // Initialize
     React.useEffect(() => {
         if (status === ':GET_STARTED:') {
-            setStatus(':PENDING:')
+            setStatus(':PENDING:');
 
-            ; (async () => {
+            (async () => {
                 xdataDispatch({ type: ':xdataState/INIT:' })
 
                 let xdata = null

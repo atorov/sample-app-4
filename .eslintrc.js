@@ -52,7 +52,7 @@ module.exports = {
     'prefer-destructuring': 0,
     'prefer-template': 0,
     'semi': 0,
-    'semi-style': ['error', 'first'],
+    'semi-style': ['error', 'last'],
 
     // 'babel/allowImportExportEverywhere': 0,
 
