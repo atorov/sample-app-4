@@ -65,7 +65,7 @@ function AppContent() {
 
                 let xdata = null
                 try {
-                    xdata = (await myRequest.current('/sample-app/xdata/index.json')).data
+                    xdata = (await myRequest('/sample-app/xdata/index.json')).data
                 }
                 catch (reason) {
                     console.error('::: [fetch xdata] reason:', reason)

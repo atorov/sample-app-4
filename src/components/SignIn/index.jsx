@@ -11,7 +11,7 @@ import useAuth from '../../lib/hooks/auth/use-auth'
 
 function SignIn() {
     // Use custom hook ---------------------------------------------------------
-    const [isAuth, authRef] = useAuth()
+    const [isAuth, auth] = useAuth()
 
     // Use React Router hook ---------------------------------------------------
     const location = useLocation()
@@ -29,13 +29,13 @@ function SignIn() {
             <br />
             <button
                 type="button"
-                onClick={() => authRef.current(true, { access_token: 'access_token' })}
+                onClick={() => auth(true, { access_token: 'access_token' })}
             >
                 Sign in
             </button>
             <button
                 type="button"
-                onClick={() => authRef.current(false)}
+                onClick={() => auth(false)}
             >
                 Sign out
             </button>
