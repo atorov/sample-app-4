@@ -8,6 +8,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const pkg = require('./package.json')
 
+const APP_NAME = pkg.name
+const APP_VERSION = pkg.version
+
 const HOST = process.env.HOST || '0.0.0.0'
 const PORT = process.env.PORT || 8080
 
@@ -22,9 +25,6 @@ const DIST = path.resolve(__dirname, 'build/www/sample-app')
 const NODE_ENV = process.env.NODE_ENV
 const MODE = NODE_ENV !== 'development' ? 'production' : 'development'
 process.env.BABEL_ENV = MODE
-
-const APP_NAME = JSON.stringify(pkg.name).replace(/['"]+/g, '')
-const APP_VERSION = JSON.stringify(pkg.version)
 
 const config = {
     mode: MODE,
