@@ -1,6 +1,8 @@
 import React from 'react'
 import { render } from 'react-dom'
 
+import './lib/es2020'
+
 import App from './components/App'
 
 const appRootElement = document.querySelector('#app-root')

@@ -10,6 +10,7 @@
         "devtool",
         "entrypoint",
         "max",
+        "nullish",
         "plusplus",
         "prestart",
         "size",
