@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
