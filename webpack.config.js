@@ -178,25 +178,31 @@ const config = {
             filename: '[name].[contenthash:4].css',
         }),
 
-        new CopyWebpackPlugin(
-            [
+        new CopyWebpackPlugin({
+            patterns: [
                 {
                     from: SRC + '/assets/img/favicon.png',
                     to: DIST + '/favicon.png',
+                    globOptions: {
+                        ignore: ['.DS_Store'],
+                    },
                 },
                 {
                     from: SRC + '/assets/img',
                     to: DIST + '/img',
+                    globOptions: {
+                        ignore: ['.DS_Store'],
+                    },
                 },
                 {
                     from: SRC + '/assets/xdata',
                     to: DIST + '/xdata',
+                    globOptions: {
+                        ignore: ['.DS_Store'],
+                    },
                 },
             ],
-            {
-                ignore: ['.DS_Store'],
-            },
-        ),
+        }),
     ],
 }
 
