@@ -1,6 +1,6 @@
 import initState from './init-state'
 
-export default function (state, action) {
+function reducer(state, action) {
     switch (action.type) {
         // Init
         case ':appState/INIT:':
@@ -20,3 +20,5 @@ export default function (state, action) {
         // return state
     }
 }
+
+export default reducer
