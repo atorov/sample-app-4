@@ -149,6 +149,17 @@ const config = {
                 })(),
             },
             {
+                test: /\.worker\.js$/,
+                include: SRC,
+                exclude: EXCLUDE_DEFAULT,
+                use: {
+                    loader: 'worker-loader',
+                    options: {
+                        name: '[name].[hash:4].js',
+                    },
+                },
+            },
+            {
                 test: /\.jsx?$/,
                 include: SRC,
                 exclude: EXCLUDE_DEFAULT,
