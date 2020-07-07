@@ -12,9 +12,9 @@ import gdv from '../../lib/utils/gdv'
 import Routes from '../Routes'
 import TopBar from '../TopBar'
 
-import { AppStateContext } from '../App/AppStateProvider'
-import { AuthStateContext } from '../App/AuthStateProvider'
-import { XDataDispatchContext, XDataStateContext } from '../App/XDataStateProvider'
+import { useAppState } from '../App/AppStateProvider'
+import { useAuthState } from '../App/AuthStateProvider'
+import { useXDataDispatch, useXDataState } from '../App/XDataStateProvider'
 
 const useStyles = makeStyles((theme) => ({
     appMain: ({ topBarHeight }) => ({
@@ -35,14 +35,14 @@ function AppContent() {
     console.log('--- --- ---')
 
     // Use context -------------------------------------------------------------
-    const appState = React.useContext(AppStateContext)
+    const appState = useAppState()
     console.log('::: appState:', appState)
 
-    const authState = React.useContext(AuthStateContext)
+    const authState = useAuthState()
     console.log('::: authState:', authState)
 
-    const xdataDispatch = React.useContext(XDataDispatchContext)
-    const xdataState = React.useContext(XDataStateContext)
+    const xdataDispatch = useXDataDispatch()
+    const xdataState = useXDataState()
     console.log('::: xdataState:', xdataState)
 
     // Use Material UI hook ----------------------------------------------------

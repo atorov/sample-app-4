@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography'
 
 import CheckCircleIcon from '@material-ui/icons/CheckCircle'
 
-import { AppStateContext } from '../App/AppStateProvider'
+import { useAppState } from '../App/AppStateProvider'
 
 const useStyles = makeStyles((theme) => ({
     icon: ({ colorBlueLight }) => ({
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Home() {
     // Use context -------------------------------------------------------------
-    const appState = React.useContext(AppStateContext)
+    const appState = useAppState()
 
     // Use Material UI hook ----------------------------------------------------
     const classes = useStyles({ colorBlueLight: appState.ui.xtheme.palette.colorBlueLight })

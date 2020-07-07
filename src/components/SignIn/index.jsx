@@ -7,7 +7,7 @@ import {
 
 import Container from '@material-ui/core/Container'
 
-import useAuth from '../../lib/hooks/auth/use-auth'
+import { useAuth } from '../App/AuthStateProvider'
 
 function SignIn() {
     // Use custom hook ---------------------------------------------------------

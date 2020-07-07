@@ -1,4 +1,4 @@
-function loadState(itemKey = 'sample-app') {
+function loadState(itemKey = APP_NAME) {
     let saved = {}
     try {
         const serialized = sessionStorage.getItem(itemKey)

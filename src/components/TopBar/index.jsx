@@ -8,7 +8,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Container from '@material-ui/core/Container'
 import Typography from '@material-ui/core/Typography'
 
-import { AppStateContext } from '../App/AppStateProvider'
+import { useAppState } from '../App/AppStateProvider'
 
 const useStyles = makeStyles((theme) => ({
     appBar: ({ topBarHeight }) => ({
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 
 function TopBar() {
     // Use context -------------------------------------------------------------
-    const appState = React.useContext(AppStateContext)
+    const appState = useAppState()
 
     // Use Material UI hook ----------------------------------------------------
     const classes = useStyles({ topBarHeight: appState.ui.topBar.height })

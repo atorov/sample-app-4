@@ -10,7 +10,25 @@ XDataDispatchContext.displayName = 'XDataDispatchContext'
 const XDataStateContext = React.createContext(initState)
 XDataStateContext.displayName = 'XDataStateContext'
 
-export { XDataDispatchContext, XDataStateContext }
+function useXDataDispatch() {
+    const context = React.useContext(XDataDispatchContext)
+
+    // if (context === undefined) {
+    //     throw new Error('Must be used within a Provider')
+    // }
+
+    return context
+}
+
+function useXDataState() {
+    const context = React.useContext(XDataStateContext)
+
+    // if (context === undefined) {
+    //     throw new Error('Must be used within a Provider')
+    // }
+
+    return context
+}
 
 function XDataStateProvider({ children }) {
     // Use state ---------------------------------------------------------------
@@ -29,5 +47,7 @@ function XDataStateProvider({ children }) {
 XDataStateProvider.propTypes = {
     children: PropTypes.any.isRequired,
 }
+
+export { useXDataState, useXDataDispatch }
 
 export default XDataStateProvider

@@ -10,7 +10,25 @@ AppDispatchContext.displayName = 'AppDispatchContext'
 const AppStateContext = React.createContext(initState)
 AppStateContext.displayName = 'AppStateContext'
 
-export { AppDispatchContext, AppStateContext }
+function useAppDispatch() {
+    const context = React.useContext(AppDispatchContext)
+
+    // if (context === undefined) {
+    //     throw new Error('Must be used within a Provider')
+    // }
+
+    return context
+}
+
+function useAppState() {
+    const context = React.useContext(AppStateContext)
+
+    // if (context === undefined) {
+    //     throw new Error('Must be used within a Provider')
+    // }
+
+    return context
+}
 
 function AppStateProvider({ children }) {
     // Use state ---------------------------------------------------------------
@@ -29,5 +47,7 @@ function AppStateProvider({ children }) {
 AppStateProvider.propTypes = {
     children: PropTypes.any.isRequired,
 }
+
+export { useAppState, useAppDispatch }
 
 export default AppStateProvider

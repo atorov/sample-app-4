@@ -1,13 +1,13 @@
 import * as React from 'react'
 
-import { AuthDispatchContext, AuthStateContext } from '../../../components/App/AuthStateProvider'
+import { useAuthDispatch, useAuthState } from '../../../components/App/AuthStateProvider'
 
 import request from '../../api/request'
 
 function useMyRequest() {
     // Use context -------------------------------------------------------------
-    const authDispatch = React.useContext(AuthDispatchContext)
-    const authState = React.useContext(AuthStateContext)
+    const authDispatch = useAuthDispatch()
+    const authState = useAuthState()
 
     // Use callback  -----------------------------------------------------------
     const myRequest = React.useCallback((resource, init, custom = {}) => request(resource, init, {

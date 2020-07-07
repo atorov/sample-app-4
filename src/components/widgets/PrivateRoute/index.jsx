@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { Redirect, Route } from 'react-router-dom'
 
-import useAuth from '../../../lib/hooks/auth/use-auth'
+import { useAuth } from '../../App/AuthStateProvider'
 
 function RenderPropWrapper(ownProps) {
     // Use custom hook ---------------------------------------------------------
