@@ -60,6 +60,9 @@ module.exports = {
                             version: 3,
                             proposals: true,
                         },
+                        targets: {
+                            node: 'current',
+                        },
                     },
                 ],
                 [
@@ -73,6 +76,7 @@ module.exports = {
     },
     ignore: [
         '__storage__',
+        'assets',
         'build',
         'dist',
         'docs',
