@@ -155,7 +155,7 @@ const config = {
                 use: {
                     loader: 'worker-loader',
                     options: {
-                        name: '[name].[hash:4].js',
+                        filename: '[name].[hash:4].js',
                     },
                 },
             },
