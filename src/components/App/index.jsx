@@ -9,6 +9,8 @@ import AppStateProvider from './AppStateProvider'
 import AuthStateProvider from './AuthStateProvider'
 import XDataStateProvider from './XDataStateProvider'
 
+import './style.css'
+import './style.less'
 import './style.scss'
 
 const appLoaderElement = document.querySelector('.app-loader')

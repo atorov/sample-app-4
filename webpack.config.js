@@ -1,7 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
 
-const Autoprefixer = require('autoprefixer')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -66,7 +65,14 @@ const config = {
                             {
                                 loader: 'postcss-loader',
                                 options: {
-                                    plugins: () => ([Autoprefixer]),
+                                    postcssOptions: {
+                                        plugins: [
+                                            [
+                                                'postcss-preset-env',
+                                                { /* Options */ },
+                                            ],
+                                        ],
+                                    },
                                 },
                             },
                         ]
@@ -78,7 +84,14 @@ const config = {
                         {
                             loader: 'postcss-loader',
                             options: {
-                                plugins: () => ([Autoprefixer]),
+                                postcssOptions: {
+                                    plugins: [
+                                        [
+                                            'postcss-preset-env',
+                                            { /* Options */ },
+                                        ],
+                                    ],
+                                },
                             },
                         },
                     ]
@@ -96,7 +109,14 @@ const config = {
                             {
                                 loader: 'postcss-loader',
                                 options: {
-                                    plugins: () => ([Autoprefixer]),
+                                    postcssOptions: {
+                                        plugins: [
+                                            [
+                                                'postcss-preset-env',
+                                                { /* Options */ },
+                                            ],
+                                        ],
+                                    },
                                 },
                             },
                             'less-loader',
@@ -109,7 +129,14 @@ const config = {
                         {
                             loader: 'postcss-loader',
                             options: {
-                                plugins: () => ([Autoprefixer]),
+                                postcssOptions: {
+                                    plugins: [
+                                        [
+                                            'postcss-preset-env',
+                                            { /* Options */ },
+                                        ],
+                                    ],
+                                },
                             },
                         },
                         'less-loader',
@@ -121,14 +148,21 @@ const config = {
                 include: SRC,
                 exclude: EXCLUDE_DEFAULT,
                 use: (() => {
-                    if (MODE === 'development') {
+                    if (MODE === ':development') {
                         return [
                             'style-loader',
                             'css-loader',
                             {
                                 loader: 'postcss-loader',
                                 options: {
-                                    plugins: () => ([Autoprefixer]),
+                                    postcssOptions: {
+                                        plugins: [
+                                            [
+                                                'postcss-preset-env',
+                                                { /* Options */ },
+                                            ],
+                                        ],
+                                    },
                                 },
                             },
                             'sass-loader',
@@ -141,7 +175,14 @@ const config = {
                         {
                             loader: 'postcss-loader',
                             options: {
-                                plugins: () => ([Autoprefixer]),
+                                postcssOptions: {
+                                    plugins: [
+                                        [
+                                            'postcss-preset-env',
+                                            { /* Options */ },
+                                        ],
+                                    ],
+                                },
                             },
                         },
                         'sass-loader',
